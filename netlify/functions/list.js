@@ -2,6 +2,10 @@ export const handler = async function(event, context) {
   if (event.httpMethod !== 'GET') {
     return {
       statusCode: 405,
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Access-Control-Allow-Origin': '*',
+      },
       body: JSON.stringify({ error: 'Method not allowed' })
     }
   }
@@ -11,6 +15,10 @@ export const handler = async function(event, context) {
   if (!headers.authorization) {
     return {
       statusCode: 401,
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Access-Control-Allow-Origin': '*',
+      },
       body: JSON.stringify({
         error: "Missing token"
       })
@@ -20,6 +28,10 @@ export const handler = async function(event, context) {
   if (headers.authorization !== "Bearer 8ddde26b-543f-4f32-988f-1cc631a02650") {
     return {
       statusCode: 401,
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Access-Control-Allow-Origin': '*',
+      },
       body: JSON.stringify({
         error: "Token invalid"
       })
@@ -49,6 +61,10 @@ export const handler = async function(event, context) {
 
   return {
     statusCode: 200,
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Access-Control-Allow-Origin': '*',
+    },
     body: JSON.stringify(data)
   }
 }

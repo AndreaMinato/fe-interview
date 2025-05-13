@@ -1,8 +1,11 @@
-
 export const handler = async function(event, context) {
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Access-Control-Allow-Origin': '*',
+      },
       body: JSON.stringify({ error: 'Method not allowed' })
     }
   }
@@ -13,6 +16,10 @@ export const handler = async function(event, context) {
     if (!body.username || !body.password) {
       return {
         statusCode: 400,
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Access-Control-Allow-Origin': '*',
+        },
         body: JSON.stringify({ error: "Fields missing" })
       }
     }
@@ -20,6 +27,10 @@ export const handler = async function(event, context) {
     if (body.username === "frontend@smartness.com" && body.password === "Password!") {
       return {
         statusCode: 200,
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Access-Control-Allow-Origin': '*',
+        },
         body: JSON.stringify({
           token: "8ddde26b-543f-4f32-988f-1cc631a02650"
         })
@@ -28,6 +39,10 @@ export const handler = async function(event, context) {
 
     return {
       statusCode: 401,
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Access-Control-Allow-Origin': '*',
+      },
       body: JSON.stringify({
         error: "invalid credentials"
       })
@@ -35,6 +50,10 @@ export const handler = async function(event, context) {
   } catch (error) {
     return {
       statusCode: 500,
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Access-Control-Allow-Origin': '*',
+      },
       body: JSON.stringify({ error: 'Internal server error' })
     }
   }
