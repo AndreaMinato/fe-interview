@@ -1,10 +1,26 @@
 export const handler = async function(event, context) {
+  // Handle CORS preflight requests
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Methods': '*',
+      },
+      body: ''
+    }
+  }
+
   if (event.httpMethod !== 'GET') {
     return {
       statusCode: 405,
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
         'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Methods': '*',
       },
       body: JSON.stringify({ error: 'Method not allowed' })
     }
@@ -18,6 +34,8 @@ export const handler = async function(event, context) {
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
         'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Methods': '*',
       },
       body: JSON.stringify({
         error: "Missing token"
@@ -31,6 +49,8 @@ export const handler = async function(event, context) {
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
         'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Methods': '*',
       },
       body: JSON.stringify({
         error: "Token invalid"
@@ -64,6 +84,8 @@ export const handler = async function(event, context) {
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
       'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': '*',
+      'Access-Control-Allow-Methods': '*',
     },
     body: JSON.stringify(data)
   }
