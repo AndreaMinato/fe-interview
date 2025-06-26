@@ -36,9 +36,9 @@ Gli oggetti di tipo "bot" hanno come dati aggiuntivi:
 ### API
 
 **Login**
-> username: 'frontend@smartness.com'
+> username: frontend@smartness.com
 >
-> password: 'Password!'
+> password: Password!
 ```
 POST https://smart-fe.netlify.app/.netlify/functions/login
 {

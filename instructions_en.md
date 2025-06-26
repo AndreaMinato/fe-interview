@@ -35,9 +35,9 @@ All items share the following fields:
 ### API
 
 **Login**
-> username: 'frontend@smartness.com'
+> username: frontend@smartness.com
 >
-> password: 'Password!'
+> password: Password!
 ```
 POST https://smart-fe.netlify.app/.netlify/functions/login
 {
